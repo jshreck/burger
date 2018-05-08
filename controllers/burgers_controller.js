@@ -15,10 +15,15 @@ router.get("/", (req, res) => {
 //order a burger
 router.post("/order", (req, res) => {
   var toInsert = req.body.burger_name;
-  burger.insertOne(toInsert, (response) => {
-    console.log(`Successfully ordered ${toInsert}, ID = ${response.insertId}`);
-  });
-  res.redirect("/");
+  if (toInsert === "") {
+  } else {
+    console.log(toInsert);
+    burger.insertOne(toInsert, (response) => {
+      console.log(`Successfully ordered ${toInsert}, ID = ${response.insertId}`);
+    });
+  }
+    res.redirect("/");
+  
 });
 
 //put to update burger (as devoured)
@@ -30,9 +35,19 @@ router.put("/devour", (req, res) => {
   res.redirect("/");
 });
 
+//delete order
 router.delete("/cancel", (req, res) => {
   var canceled = req.body.id;
   burger.deleteOne(canceled, (response) => {
+    console.log(response);
+  });
+  res.redirect("/");
+});
+
+//delete any devoured burgers
+router.delete("/clear", (req, res) => {
+  burger.deleteDevoured((response) => {
+    console.log("Cleared!");
     console.log(response);
   });
   res.redirect("/");

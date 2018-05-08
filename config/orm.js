@@ -35,6 +35,17 @@ orm = {
             cb(result);
         });
     },
+    //delete by selector = selectorValue
+    deleteMany: function (table, selector, selectorValue, cb) {
+
+        var obj = {};
+        obj[selector] = selectorValue;
+
+        connection.query("DELETE FROM ?? WHERE ?", [table, obj], (err, result) => {
+            if (err) throw err;
+            cb(result);
+        });
+    }
 };
 
 module.exports = orm;

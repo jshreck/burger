@@ -1,6 +1,7 @@
 body {
     background-image: url("/assets/img/black-white-checks.jpg");
     background-position: center;
+    font-family: "Shrikhand";
  }
  .header {
      border: 10px solid #b71c1c;
@@ -29,14 +30,15 @@ body {
 
 button {
     margin: 5px;
+    font-family: "Shrikhand";
 }
 
 /* label focus color */
 .input-field input:focus + label {
     color: #b71c1c !important;
-  }
-  /* label underline focus color */
-  .row .input-field input:focus {
+}
+/* label underline focus color */
+.row .input-field input:focus {
     border-bottom: 1px solid #b71c1c !important;
     box-shadow: 0 1px 0 0 #b71c1c !important
-  }
+}

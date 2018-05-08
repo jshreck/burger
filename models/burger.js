@@ -22,6 +22,11 @@ var burger = {
         orm.deleteOne("burgers", id, (res) => {
             cb(res);
         });
+    },
+    deleteDevoured: function (cb) {
+        orm.deleteMany("burgers", "devoured", 1, (res) => {
+            cb(res);
+        })
     }
 
   };
